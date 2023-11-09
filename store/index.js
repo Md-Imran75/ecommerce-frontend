@@ -6,7 +6,9 @@ const initialState = {
     isCartOpen: false,
     cart: [],
     items: [],
+
 };
+
 
 
 
@@ -18,25 +20,27 @@ export const cartSlice = createSlice({
         setItems: (state , action) => {
             state.items = action.payload
         },
-
+    
     addToCart: (state , action) => {
         const item = state.cart.find((p) => p.id === action.payload.id);
         if(item){
           if(item.attributes.availableQTY >= item.quantity){
             item.quantity++
+            if(item.attributes.availableQTY >= 1){
+                item.attributes.availableQTY--
+              }
           }
           item.attributes.price = item.oneProductPrice * item.quantity 
-          if(item.attributes.availableQTY >= 1){
-            item.attributes.availableQTY--
-          }
+          
         }else{
          state.cart.push({...action.payload , quantity : 1}); 
          if(action.payload.attributes.availableQTY >= 1){
             action.payload.attributes.availableQTY--
           } 
         }
+    
     } ,
-
+    
     removeFromCart: (state , action) => {
      
         state.cart = state.cart.filter((item) => item.id !== action.payload.id)
@@ -45,7 +49,7 @@ export const cartSlice = createSlice({
     increaseCount: (state , action) => {
         state.cart = state.cart.map((item) => {
             if(item.id === action.payload.id){
-                if(item.attributes.availableQTY >= item.quantity){
+                if(item.attributes.availableQTY !== 0){
                     item.quantity++
                   }
                 item.attributes.price = item.oneProductPrice * item.quantity
@@ -64,7 +68,9 @@ export const cartSlice = createSlice({
                 item.quantity--;
                 item.attributes.price = item.oneProductPrice * item.quantity
                 
-                    item.attributes.availableQTY++
+                
+                item.attributes.availableQTY++
+                  
                   
             }
             return item

@@ -176,6 +176,7 @@ const Navbar = () => {
                       localStorage.setItem('user', '')
                       setShowButton(false)
                       notify()
+                
                       router.push('/')
                     }}
                     >Logout</button>

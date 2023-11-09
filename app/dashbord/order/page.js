@@ -1,24 +1,22 @@
-'use client'
-import React, { useEffect } from 'react'
-import { isJwtTokenPresent, userData } from '@/utils/Helper'
+import React from 'react'
+import ProtectRoute from '@/utils/ProtectRoute'
+import Wrapper from '@/components/Wrapper'
 
 
 
 const Order = () => {
     
-    useEffect(() => {
-        if (!isJwtTokenPresent()) {
-            if(typeof window !== 'undefined'){
-              window.location.href = '/';
-              return null;
-            }
-          }
-        
-    } , [isJwtTokenPresent])
-
+   
   return (
-    <div>Order</div>
+    <div>
+    <ProtectRoute>
+     <Wrapper>
+      <div>Hello</div>
+     </Wrapper>
+    </ProtectRoute>
+    </div>
   )
+
 }
 
 export default Order

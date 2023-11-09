@@ -6,12 +6,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import Image from 'next/image'
 import { increaseCount, decreaseCount, removeFromCart } from '@/store'
 import Wrapper from '@/components/Wrapper'
+import ProtectRoute from '@/utils/ProtectRoute'
 
 const Checkout = () => {
   const dispatch = useDispatch()
   const { cart } = useSelector((state) => state.cart)
-
+  console.log(cart)
   return (
+    <ProtectRoute>
     <div className="w-full font-roboto md:py-20">
       <Wrapper>
         {/* checkout screen  */}
@@ -30,7 +32,7 @@ const Checkout = () => {
               <div className="flex-[2]">
                 <div className="text-lg font-bold">Cart Items</div>
 
-
+              
 
                 {
                        cart.map((item) => (
@@ -137,7 +139,9 @@ const Checkout = () => {
         )}
       </Wrapper>
     </div>
+    </ProtectRoute>
   )
+  
 }
 
 export default Checkout

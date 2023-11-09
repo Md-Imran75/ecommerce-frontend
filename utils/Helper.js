@@ -1,11 +1,13 @@
 import { useRouter } from "next/navigation";
 
+// function for discount price
 export const DiscountPriceCalculate = (orginalPrice , price) => {
      const discount = orginalPrice - price;
      const discountPercentage = (discount/orginalPrice) * 100 ;
      return discountPercentage.toFixed(0) 
 }
 
+// store user for login
 export const storeUser = (data) => {
      localStorage.setItem('user' , 
      JSON.stringify({
@@ -18,21 +20,21 @@ export const storeUser = (data) => {
 
 export const userData = () => {
 
-
      if (typeof window !== 'undefined') {
           const stringifiedData = localStorage.getItem('user') || '""';
           const user =JSON.parse(stringifiedData) || {};
           return user
         }
-        
-  
 }
+
+
+// validation jwt token
 
 export const isJwtTokenPresent = () => {
      if (typeof window !== 'undefined') {
           const stringifiedData = localStorage.getItem('user') || '""';
           const user =JSON.parse(stringifiedData) || {};
-          console.log(user.jwt)
+     
           return user.jwt
         }
 

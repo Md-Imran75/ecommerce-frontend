@@ -1,11 +1,20 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState , useEffect } from 'react'
 import Link from 'next/link'
 import {AiFillDelete} from 'react-icons/ai'
 import { useSelector , useDispatch } from 'react-redux'
 import Image from 'next/image'
 import { increaseCount , decreaseCount, removeFromCart } from '@/store'
+import { userData } from '@/utils/Helper'
 
 const CartDesign = ({setCartOpen}) => {
+  const {jwt} = userData()
+  const [ userJwt , setUserJwt] = useState(true)
+  useEffect(() => {
+    if(jwt){
+      setUserJwt(false)
+    }
+   }, [jwt])
+
   const dispatch = useDispatch()
   const {cart} = useSelector((state => state.cart))
   const subTotal = useMemo(() => {
@@ -67,11 +76,21 @@ const CartDesign = ({setCartOpen}) => {
 
       <div className=' text-[13px] bg-secondary-400 w-full bottom-0 sticky px-[15px]  flex justify-between'>
 
-      <Link  href='/checkout' >
-      <button className='mt-[18px]   font-bold bg-primary-500 py-1 text-nautral-200 px-[10px] mb-[80px]'>
+      { !userJwt ? (<Link  href='/checkout' >
+      <button className={`mt-[18px]   font-bold bg-primary-500 py-1 text-nautral-200 px-[10px] mb-[80px]`}>
         Checkout
       </button>
-      </Link>
+      </Link>) : 
+      (
+       <div>
+        <button className={`mt-[18px] cursor-not-allowed  font-bold bg-primary-500 py-1 text-nautral-200 px-[10px] `}>
+        Checkout
+       </button>
+       <p className='text-[10px] text-primary-100'>please login for checkout</p>
+       </div> 
+      )
+      
+      }
 
     <div className='mt-[20px] text-primary-100 flex justify-between gap-2 '>
       <p className='font-bold'>Subtotal:</p>
@@ -86,7 +105,7 @@ const CartDesign = ({setCartOpen}) => {
 
 {/* image price and increase/decrease button end */}
       
-      <div className='bg-primary-100 opacity-50 -z-50 hidden w-full'></div>
+      <div className='bg-neutral-900 opacity-30 -z-50  w-full'></div>
        
     </div>
   )
