@@ -1,6 +1,6 @@
 import React from 'react'
 import ProtectRoute from '@/utils/ProtectRoute'
-import Wrapper from '@/components/Wrapper'
+import Wrapper from '@/app/ui/wrapper/Wrapper'
 
 
 

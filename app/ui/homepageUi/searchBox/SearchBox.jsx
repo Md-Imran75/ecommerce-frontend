@@ -2,7 +2,7 @@ import React from 'react';
 
 function SearchBox() {
   return (
-    <div className="relative mt-10 md:px-0 px-5 md:mt-[80px] ">
+    <div className="relative  md:px-0 px-5  ">
       <input
         type="text"
         className="w-full px-4 py-2 pl-10 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-primary-500 focus:ring focus:ring-primary-200"

@@ -17,6 +17,7 @@ const CartDesign = ({setCartOpen}) => {
 
   const dispatch = useDispatch()
   const {cart} = useSelector((state => state.cart))
+  console.log( 'cart' , cart)
   const subTotal = useMemo(() => {
     return cart.reduce((total , val) => total + val.attributes.price , 0 )
   })
@@ -52,13 +53,7 @@ const CartDesign = ({setCartOpen}) => {
   
             <div className=' w-[150px] leading-[18px] text-[13px]'>{item.attributes.title}</div>
   
-            <div className='flex mx-2 text-[12px] flex-col'>
-             <button 
-             onClick={() => dispatch(increaseCount({id: item.id}))}
-             >+</button>
-              <p>{item.quantity}</p>
-             <button  onClick={() => dispatch(decreaseCount({id: item.id}))} >-</button>
-            </div>
+            
             <div className='flex flex-col'>
 
             <div className='text-[12px] mx-1'> &#2547;{item.attributes.price}</div> 

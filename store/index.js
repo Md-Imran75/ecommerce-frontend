@@ -24,19 +24,12 @@ export const cartSlice = createSlice({
     addToCart: (state , action) => {
         const item = state.cart.find((p) => p.id === action.payload.id);
         if(item){
-          if(item.attributes.availableQTY >= item.quantity){
-            item.quantity++
-            if(item.attributes.availableQTY >= 1){
-                item.attributes.availableQTY--
-              }
-          }
+       
+          item.quantity++
           item.attributes.price = item.oneProductPrice * item.quantity 
           
         }else{
          state.cart.push({...action.payload , quantity : 1}); 
-         if(action.payload.attributes.availableQTY >= 1){
-            action.payload.attributes.availableQTY--
-          } 
         }
     
     } ,

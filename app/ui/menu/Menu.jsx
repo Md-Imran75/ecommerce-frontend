@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { BsChevronDown } from "react-icons/bs";
 import Category from "../category/Category";
-import getCategories from "@/libs/getCategories";
+import getCategories from "@/app/lib/getCategories";
 
 const data = [
     { id: 1, name: "Home", url: "/" },

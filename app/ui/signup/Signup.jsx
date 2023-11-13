@@ -1,6 +1,6 @@
 'use client'
-import getAnything from '@/libs/getAnything';
-import postUser from '@/libs/postUser';
+import getAnything from '@/app/lib/getAnything';
+import postUser from '@/app/lib/postUser';
 import React, { useState } from 'react';
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {  toast } from 'react-toastify';

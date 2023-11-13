@@ -1,14 +1,14 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import ProductPageCarousel from '@/components/ProductPage/ProductPageCurosel'
-import Wrapper from '@/components/Wrapper'
-import RelatedProductCurousel from '@/components/ProductPage/RelatedProductCurousel'
-import getAnything from '@/libs/getAnything'
+import ProductPageCarousel from '@/app/ui/ProductPage/ProductPageCurosel'
+import Wrapper from '@/app/ui/wrapper/Wrapper'
+import RelatedProductCurousel from '@/app/ui/ProductPage/RelatedProductCurousel'
+import getAnything from '@/app/lib/getAnything'
 import Markdown from 'react-markdown'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addToCart } from '@/store'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -70,9 +70,9 @@ const ProductDetailsPage = ({params}) => {
 
   return (
 
-    <div className='w-full mt-[30px] md:my-0 md:py-20'>
+    <div className='w-full mt-[30px]   md:my-0 md:py-20'>
     <Wrapper>
-        <div className='flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px] '>
+        <div className='flex flex-col lg:flex-row md:px-10  gap-[50px] lg:gap-[100px] '>
       
      {/* left coloum start */}
      <div className='w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0 '>
@@ -84,7 +84,7 @@ const ProductDetailsPage = ({params}) => {
      {/* right coloum start */}
      <div className='flex-[1] py-3'>
        {/* Product Title */}
-       <div className='text-[34px] font-roboto font-semibold mb-2 leading-tight'>
+       <div className='text-[25px] text-neutral-500 font-roboto font-medium mb-2 leading-tight'>
         {data?.[0]?.attributes?.title}
        </div>
 
@@ -95,7 +95,7 @@ const ProductDetailsPage = ({params}) => {
        </div>
 
        {/* product price */}
-       <div className='text-lg font-semibold font-roboto'>
+       <div className='text-lg text-neutral-500 font-semibold font-roboto'>
         Price: {data?.[0]?.attributes?.price} BDT
        </div>
 
@@ -182,7 +182,7 @@ const ProductDetailsPage = ({params}) => {
           block:'center',
           behavior:'smooth'
         })
-      }}>Add to bag</button>
+      }}>Add to Garage</button>
 
       {/* Add to button end */}
 
@@ -209,7 +209,9 @@ const ProductDetailsPage = ({params}) => {
      </div>
 
     {/* related product curousel */}
-    <RelatedProductCurousel products={relatedProductsData} />
+     <div className='border-background-500 border px-5 py-10 mt-10'>
+     <RelatedProductCurousel products={relatedProductsData} />
+     </div>
       {/* related product curousel */}
 
 

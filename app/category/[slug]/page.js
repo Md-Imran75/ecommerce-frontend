@@ -1,8 +1,8 @@
 
-import Wrapper from '@/components/Wrapper'
-import ProductCard from '@/components/ProductPage/ProductCard'
-import getCategories from '@/libs/getCategories'
-import getAnything from '@/libs/getAnything'
+import Wrapper from '@/app/ui/wrapper/Wrapper'
+import ProductCard from '@/app/ui/ProductPage/ProductCard'
+import getCategories from '@/app/lib/getCategories'
+import getAnything from '@/app/lib/getAnything'
 
 
 

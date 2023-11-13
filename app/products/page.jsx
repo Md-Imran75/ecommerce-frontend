@@ -1,7 +1,7 @@
 import React from 'react'
-import getProducts from '@/libs/getProducts'
-import ProductCard from '@/components/ProductPage/ProductCard'
-import Wrapper from '@/components/Wrapper'
+import getProducts from '@/app/lib/getProducts'
+import ProductCard from '@/app/ui/ProductPage/ProductCard'
+import Wrapper from '@/app/ui/wrapper/Wrapper'
 
 const Products = async() => {
   const response = await getProducts()

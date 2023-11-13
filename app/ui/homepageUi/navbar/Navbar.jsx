@@ -2,18 +2,22 @@
 
 import Link from 'next/link'
 import React, { useState , useEffect } from 'react'
-import Wrapper from '../Wrapper'
-import MobileMenu from '../menu/MobileMenu'
+import Wrapper from '../../wrapper/Wrapper'
+import MobileMenu from '../../menu/MobileMenu'
 import { BiMenuAltRight } from "react-icons/bi";
 import {BsFillHeartFill } from "react-icons/bs";
 import { VscChromeClose } from "react-icons/vsc";
-import Login from '../login/Login'
-import Signup from '../signup/Signup'
+import Login from '../../login/Login'
+import Signup from '../../signup/Signup'
 import { userData } from '@/utils/Helper'
 // import Logout from '../logout/Logout'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import Logo from '../logo/Logo'
+import LogoDesign from '../logo/LogoDesign'
+import SearchBox from '../searchBox/SearchBox'
+
 
 
 
@@ -21,12 +25,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Navbar = () => {
+
   // const [categoryMenu , setCategoryMenu] = useState(true)
   const router = useRouter()
   const [mobileMenu , setMobileMenu] = useState(false)
   const [ showCartMenu , setshowCartMenu] = useState(false)
   const [show , setShow] = useState('translate-y-0')
-  const [lastScrollY , setLastScrollY] = useState(0)
+ 
   const [showButton , setShowButton] = useState(false)
 
 
@@ -81,9 +86,10 @@ const Navbar = () => {
   
 
   return (
-    <div
-    
-    className={`w-full h-[50px] md:h-[60px] bg-primary-500 flex items-center justify-between z-10 sticky top-0 transition-transform duration-300 ${show}`}
+    <div className='flex flex-col bg-white-100 sticky top-0 w-full  z-50 font-roboto'>
+
+      <div
+    className={`w-full h-[50px] md:h-[70px] flex items-center justify-between z-10 transition-transform duration-300 ${show}`}
     > 
      
       {/*Category menu start */}
@@ -107,10 +113,15 @@ const Navbar = () => {
                {/*Category menu end */}
 
      <Wrapper className={`h-[68px] flex justify-between items-center`}>
+      <div>
       <Link href='/'>
-      <p className={`font-bold text-xl font-roboto text-[10px] md:text-[25px] text-secondary-400 `} >Sohoj Bazar</p>
+       <LogoDesign/>
       </Link>
-       
+      </div>
+
+       <div className=' w-[50px] md:w-[700px] px-10 md:block hidden '>
+       <SearchBox/>
+       </div>
        
       
       {/* Menu Item Start */}
@@ -171,7 +182,7 @@ const Navbar = () => {
                    </Link>
                   <div>
                   <button
-                    className='bg-secondary-500 text-[10px] md:text-[15px] px-1 md:py-1 md:px-3 py-0 rounded-md  text-primary-200 font-roboto'
+                    className='bg-secondary-500 text-[10px] md:text-[15px] px-1 md:py-1 md:px-3 py-0 rounded-md  text-white-200 font-roboto'
                     onClick={() => {
                       localStorage.setItem('user', '')
                       setShowButton(false)
@@ -188,7 +199,7 @@ const Navbar = () => {
 
               <div>
               <button
-                className='bg-secondary-500 text-[10px] md:text-[15px] px-1 md:py-1 md:px-3 py-0 rounded-md  text-primary-200 font-roboto'
+                className='bg-secondary-500 text-[10px] md:text-[15px] px-1 md:py-1 md:px-3 py-0 rounded-md  text-white-200 font-roboto'
                 onClick={() => setIsOpen(!isOpen)}
                 >Login</button>
               </div>
@@ -212,6 +223,28 @@ const Navbar = () => {
      {/* SingUp Modal end */}
 
      
+    </div>
+
+       {/* navbar 2nd part */}
+       <div className=' block md:hidden bg-white-200 py-3'>
+        
+        <SearchBox/>
+        
+       </div>
+
+      {/* Navbar 3 part */}
+      <div className='bg-primary-100 py-3 '>
+       <div className=' font-medium  text-neutral-500'>
+       <Wrapper>
+        <div className='flex justify-center gap-6 items-center '>
+        <div><Link href={'/'}>Home</Link></div>
+         <div><Link href={'/about'}>About</Link></div>
+         <div><Link href={'/products'}>All Bike</Link></div>
+         <div><Link href={'/contact'}>Contact</Link></div>
+        </div>
+       </Wrapper>
+       </div>
+      </div>
     </div>
   )
 }

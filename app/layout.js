@@ -1,15 +1,15 @@
 'use client'
-import Navbar from '@/components/HomeStyles/Navbar'
+import Navbar from '@/app/ui/homepageUi/navbar/Navbar'
 import './globals.css'
 import { Inter, } from 'next/font/google'
-import Cart from '@/components/cart/Cart'
-import MobileCart from '@/components/cart/MobileCart'
-import Footer from '@/components/footer/Footer'
+import Cart from '@/app/ui/cart/Cart'
+import MobileCart from '@/app/ui/cart/MobileCart'
+import Footer from '@/app/ui/footer/Footer'
 import store from '@/store/store'
 import { Provider } from 'react-redux'
 import { metadata } from './meta'
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+
 
 
 

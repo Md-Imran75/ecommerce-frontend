@@ -1,5 +1,5 @@
 'use client'
-import LoginUser from '@/libs/loginUser';
+import LoginUser from '@/app/lib/loginUser';
 import { storeUser } from '@/utils/Helper';
 import React, { useState } from 'react';
 import {AiFillCloseCircle} from 'react-icons/ai'

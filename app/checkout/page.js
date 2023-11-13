@@ -5,7 +5,7 @@ import { AiFillDelete } from 'react-icons/ai'
 import { useSelector, useDispatch } from 'react-redux'
 import Image from 'next/image'
 import { increaseCount, decreaseCount, removeFromCart } from '@/store'
-import Wrapper from '@/components/Wrapper'
+import Wrapper from '@/app/ui/wrapper/Wrapper'
 import ProtectRoute from '@/utils/ProtectRoute'
 
 const Checkout = () => {
