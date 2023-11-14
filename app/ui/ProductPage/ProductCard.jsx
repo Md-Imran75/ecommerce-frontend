@@ -22,7 +22,7 @@ const ProductCard = ({ data }) => {
   
   const dispatch = useDispatch()
   
-  console.log(title.length)
+  
 
   const notify = () => {
     toast.success('Success. Check your cart!', {

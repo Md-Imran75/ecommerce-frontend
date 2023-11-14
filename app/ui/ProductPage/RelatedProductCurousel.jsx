@@ -38,9 +38,9 @@ const RelatedProductCurousel = ({products}) => {
             {
               products?.map((item) => {
                 return (
-                  <div className=' h-full'>
+                 
                   <ProductCard key={item.id} data={item} />
-                  </div>
+                 
                 )
               })
             }

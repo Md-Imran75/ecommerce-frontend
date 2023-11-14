@@ -60,10 +60,10 @@ const ProductDetailsPage = ({params}) => {
   {/*  show error data */}
   const [error , setError] = useState(false)
 
-
-                useEffect(() => {
-                   getProduct()
-                } , [])
+   // call the getProduct funtion
+           useEffect(() => {
+              getProduct()
+           } , [])
 
  
    
