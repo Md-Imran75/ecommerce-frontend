@@ -3,14 +3,15 @@ import React from 'react'
 import Link from 'next/link';
 import { useState } from 'react';
 import { GiShoppingBag } from 'react-icons/gi'
-import CartDesign from '../cart design/CartDesign';
+import MobileCartDesign from '../cart design/MobileCartDesign';
+
 
 const MobileCart = () => {
   const [mobileCartOpen , setMobileCartOpen] = useState(false)
 
   return (
     <div
-    className=' z-20 fixed flex  justify-between items-center visible lg:invisible lg:absolute right-0 bottom-0 h-[50px] font-extrabold cursor-pointer  text-primary-100  rounded-sm shadow-md w-full bg-primary-100'
+    className=' z-20 fixed flex  justify-between items-center visible md:invisible lg:absolute right-0 bottom-0 h-[50px] font-extrabold cursor-pointer  text-primary-100  rounded-sm shadow-md w-full bg-primary-100'
     >
 
         <div  
@@ -19,7 +20,9 @@ const MobileCart = () => {
            <GiShoppingBag className='mx-4 text-secondary-400' /> 
         </div>
 
-        {mobileCartOpen && <CartDesign setMobileCartOpen={setMobileCartOpen} />}
+        {mobileCartOpen &&
+          <MobileCartDesign setMobileCartOpen={setMobileCartOpen} />
+          }
 
         <div className='text-sm text-center py-1  text-primary-100 bg-secondary-400'>
         <Link href={'/products'}>

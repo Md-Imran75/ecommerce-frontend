@@ -25,8 +25,9 @@ export const cartSlice = createSlice({
         const item = state.cart.find((p) => p.id === action.payload.id);
         if(item){
        
-          item.quantity++
-          item.attributes.price = item.oneProductPrice * item.quantity 
+        //   item.quantity++
+        //   item.attributes.price = item.oneProductPrice * item.quantity 
+        alert('This bike already added')
           
         }else{
          state.cart.push({...action.payload , quantity : 1}); 

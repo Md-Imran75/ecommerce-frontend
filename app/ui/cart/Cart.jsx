@@ -10,7 +10,7 @@ const Cart = () => {
   return (
    <div>
      <div
-    className=' z-20 absolute invisible lg:visible md:fixed right-0 top-80 h-[110px] font-extrabold cursor-pointer  text-primary-100  rounded-sm shadow-md w-[100px] bg-secondary-500'
+    className=' z-20 absolute invisible md:visible md:fixed right-0 top-80 h-[110px] font-extrabold cursor-pointer  text-primary-100  rounded-sm shadow-md w-[100px] bg-secondary-500'
     onClick={() => setCartOpen(true)}
     >
 

@@ -9,6 +9,7 @@ import store from '@/store/store'
 import { Provider } from 'react-redux'
 import { metadata } from './meta'
 import { ToastContainer } from 'react-toastify'
+import MobileCartDesign from './ui/cart design/MobileCartDesign'
 
 
 
