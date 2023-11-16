@@ -3,10 +3,9 @@ import Link from 'next/link'
 import {AiFillDelete} from 'react-icons/ai'
 import { useSelector , useDispatch } from 'react-redux'
 import Image from 'next/image'
-import { increaseCount , decreaseCount, removeFromCart } from '@/store'
 import { userData } from '@/utils/Helper'
 
-const CartDesign = ({setCartOpen}) => {
+const CartDesign = ({setCartOpen , setMobileCartOpen}) => {
   const {jwt} = userData()
   const [ userJwt , setUserJwt] = useState(true)
   useEffect(() => {
@@ -17,19 +16,24 @@ const CartDesign = ({setCartOpen}) => {
 
   const dispatch = useDispatch()
   const {cart} = useSelector((state => state.cart))
-  console.log( 'cart' , cart)
+  
   const subTotal = useMemo(() => {
     return cart.reduce((total , val) => total + val.attributes.price , 0 )
   })
   return (
-    <div className='flex w-full  h-full fixed z-50 text-neutral-500 font-roboto justify-between flex-row'>
+    <div className='lg:flex w-full  h-full fixed z-50 text-neutral-500 font-roboto lg:justify-between flex-row'>
  
-      <div className='absolute overflow-y-scroll  items-center top-0 right-0 bg-primary-100 h-full w-[300px]'>
+      <div className='absolute overflow-y-scroll  -top-[100px] items-center lg:top-0 lg:right-0 bg-primary-100 h-full w-full lg:w-[300px]'>
       {/* Shopping cart text and close button add */} 
       <div className='flex py-1 justify-between px-3 mt-3'>
       <div className='text-lg text-neutral-400 font-bold' >Shopping Cart</div>  
 
-      <div onClick={() => setCartOpen(false)}><button className='bg-secondary-400 text-primary-200 px-2 '>Close</button></div>  
+      <div onClick={() => {
+        setMobileCartOpen(false)
+        setCartOpen(false)
+      }
+      }
+      ><button className='bg-secondary-400 text-primary-200 px-2 '>Close</button></div>  
       </div> 
       {/* Shopping cart text and close button end */}
 

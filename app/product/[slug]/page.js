@@ -34,14 +34,13 @@ const ProductDetailsPage = ({params}) => {
     const productSlug = params.slug
     const resProducts = await getAnything(`/api/products?populate=*&[filters][slug][$eq]=${productSlug}`)
     const dataProduct = await resProducts?.data
-    const resSizes = await getAnything(`/api/sizes?populate=*&[filters][products][slug][$eq]=${productSlug}`)
-    const dataSize = await resSizes?.data
+  
     const relatedProducts = await getAnything(`/api/products?populate=*&[filters][slug][$ne]=${productSlug}`)
     const dataRelatedProducts = await relatedProducts?.data
 
     setData(dataProduct)
     setRelatedProductsData(dataRelatedProducts)
-    setsize(dataSize)
+  
     return data
  }  
 
@@ -51,14 +50,6 @@ const ProductDetailsPage = ({params}) => {
   {/* Relatedproducts data */}
   const [relatedProductsData , setRelatedProductsData] = useState([])
 
-  {/* size data */}
-  const [size , setsize] = useState([])
-
-  {/* select size data */}
-  const [selectSize , setSelectSize] = useState()
-
-  {/*  show error data */}
-  const [error , setError] = useState(false)
 
    // call the getProduct funtion
            useEffect(() => {
@@ -107,82 +98,20 @@ const ProductDetailsPage = ({params}) => {
             {`(Also includes all applicable duties)`}
        </div>
 
-       {/* Product size range add */}
        
-        
-          <div className='mb-10'>
-        {/* Heading Start */}
-         
-         {
-          size?.[0]?.attributes && <div className='flex justify-between mb-2'>
-          <div className="text-md font-semibold font-roboto">
-            Select Size
-          </div>
-            <div className="text-md font-roboto font-medium text-black/[0.5] cursor-pointer">
-              Select Guide
-            </div>
-       </div>
-         }
-        
-       
-        {/* Heading Start */}
-         
-         {/* Size Start */}
-         <div id='sizeGrid' className='grid grid-cols-6 gap-2'>
-           {
-            size?.[0]?.attributes ? (
-              size?.map((item) => {
-                return(
-                  <div key={item.id} className={`border rounded-sm text-center py-1 font-medium hover:border-neutral-300 cursor-pointer font-roboto ${selectSize === item?.attributes?.name ? 'bg-primary-500' : ''} `}
-                  onClick={() => {
-                    setSelectSize(item?.attributes?.name)
-                    setError(false)
-                  }}
-                  >
-                  {item?.attributes?.name}
-
-                </div>
-                )
-              })
-            ) : ''
-           }
-
-         </div>
-          {/* Size End */}
-
-          {/* Show error message start */}
-               {
-                 error && (<div className='text-secondary-600 mt-1 font-roboto'>
-                   Size selection is required
-                </div>)
-              }
-            
-          {/* Show error message start */}
-
-       </div>
-
-       {/* Product size range add */}
 
          {/* Add to button Add */}
       
       <div className='flex justify-between mb-10'>
       <button className='w-[180px] h-[50px] mr-2 py-1 md:py-2 rounded-md lg:mr-5 xl:mr-[0] bg-secondary-500 text-primary-100 text-sm md:text-lg font-medium transition-transform  active:scale-95 mb-3 hover:bg-primary-500 hover:text-secondary-500 font-roboto ' onClick={() => {
-        if(!selectSize && size?.[0]?.attributes){
-          setError(true)
-        }else{
           dispatch(addToCart({
             ...data?.[0],
-            selectSize,
+    
             oneProductPrice: data?.[0]?.attributes?.price
 
           }));
           notify()
-        }
-        document.getElementById('sizeGrid').scrollIntoView({
-          block:'center',
-          behavior:'smooth'
-        })
-      }}>Add to Garage</button>
+              }}>Add to Garage</button>
 
       {/* Add to button end */}
 

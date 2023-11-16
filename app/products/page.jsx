@@ -28,10 +28,14 @@ const Products = () => {
   
   
   return (
-    <div>
+    <div className='mt-[50px]'>
       <Wrapper>
+    <div className='border border-white-600 px-5 py-10'>
+      <div className='mb-5 text-lg font-roboto text-neutral-500'>
+        ALL BIKE
+      </div>
     <div
-       className='grid grid-cols-1  grid-rows-1 h-full sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5  gap-5   md:my-14 px-5   md:px-0 '
+       className='grid grid-cols-1   grid-rows-1 h-full sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5  gap-5   px-5   md:px-0 '
      >
          {products?.map((item) => {
          return (
@@ -52,6 +56,7 @@ const Products = () => {
           }
         }}>Next</button>
       </div>
+    </div>
     </Wrapper>
     </div>
   )

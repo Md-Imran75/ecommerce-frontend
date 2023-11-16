@@ -17,8 +17,9 @@ const ProductCard = ({ data }) => {
 
   // Access the attributes property of the data prop
   const { attributes} = data;
-  const {title , orginalPrice , thumbnail , price} = attributes
-
+  const {title , brand , orginalPrice , thumbnail , price} = attributes
+  
+ 
   
   const dispatch = useDispatch()
   
@@ -71,20 +72,9 @@ const ProductCard = ({ data }) => {
             &#2547;{price}
             </p>
 
-            { orginalPrice && (
-              
-                <>
-                  <p className='text-[11px] font-medium line-through mt-1 font-roboto'>
-                  &#2547;{orginalPrice}
-                </p>
-                <p className='ml-auto text-[11px]  font-medium mt-1 font-roboto'>
-                   {DiscountPriceCalculate(orginalPrice , price)}
-                   % off
-                </p>
-                
-                </>
-            )}
-
+            <div className='uppercase font-roboto text-neutral-500/[0.90] font-bold text-[12px]'>
+              {brand}
+            </div>
 
           </div>
         </div>

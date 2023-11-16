@@ -1,33 +1,59 @@
-import React from 'react'
-import Link from 'next/link'
+'use client'
 
-const Category = ({category}) => {
-  if (!category) {
-    return null;
+import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { getCategoriesForNavbar } from '@/app/lib/getCategories'
+import Image from 'next/image'
+
+
+const Category = () => {
+  const [data, setData] = useState([])
+
+  const fetchCategories = async () => {
+    try {
+      const res = await getCategoriesForNavbar()
+      const data = await res?.data
+      setData(data)
+      return data
+    } catch (error) {
+      console.error('Error fetching categories:', error)
+    }
   }
-   
- 
-  
+
+  console.log(data)
+
+  useEffect(() => {
+    fetchCategories()
+  }, [])
+
+  if (!data) {
+    return null
+  }
 
   return (
-    <div >
-      <ul className="bg-primary-100   z-50   min-w-[230px] text-black">
-        <h4 className='px-3 pt-3 font-roboto font-bold h-10'>Categories</h4>
-        {category?.map((item) => {
-          return (
-            <Link key={item?.id} href={`/category/${item?.attributes?.slug}`}>
-              
-                <li className="h-9 text-sm flex justify-between items-center px-3 hover:bg-secondary-400 hover:text-primary-100 rounded-sm font-roboto">
-                  {item?.attributes?.name}
-                  <span className="opacity-50 text-sm"> {item?.attributes?.products?.data?.length} </span>
-                </li>
-              
-            </Link>
-          )
-        })}
-        
-      </ul>
-     
+    <div className='w-[300px] shadow-lg scroll-smooth snap-y top-[75px] scroll-m-0 px-3 py-3 absolute z-50 bg-white-500'>
+      <div className='mb-5 text-lg font-bold font-roboto'>All Model</div>
+
+      <div>
+        {data.map((item) => (
+          
+          <div className='flex justify-start gap-5 text-sm font-roboto border-t-[3px] border-t-background-500 px-1 py-1' key={item.id}>
+            <div>
+            <Image
+            height={50}
+            width={50}
+            src={item.attributes.image.data.attributes.url}
+            alt={item.attributes.name}
+            
+            />
+            </div>
+            <div>
+            {item.attributes.name}
+            </div>
+            
+            </div>
+        ))}
+      </div>
     </div>
   )
 }

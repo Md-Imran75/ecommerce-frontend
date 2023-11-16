@@ -3,15 +3,13 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
 
-const CategoryDataDesign = ({ data,page, pageCount, setPage }) => {
+const BrandDataForPagination = ({ data,page, pageCount, setPage , slug }) => {
  
 
   return (
     <div>
-      <div className='text-lg font-roboto font-bold uppercase  text-neutral-500'>
-        All Models
-      </div>
-       <div className='grid grid-cols-2 grid-rows-1 h-full sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 md:gap-2 mt-5'>
+       
+       <div className='grid grid-cols-2 grid-rows-1 h-full sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 mt-5'>
       {data?.map((item) => (
         <Link key={item.id} href={`/model/${item?.attributes?.slug}`}>
         <div  className='border border-background-500'>
@@ -21,7 +19,7 @@ const CategoryDataDesign = ({ data,page, pageCount, setPage }) => {
             height={500}
             width={500}
           />
-          <div className='text-[12px] text-neutral-500 font-roboto mt-2 px-2 mb-2 py-1 md:h-[50px] h-[70px]'>
+          <div className='text-[12px] text-neutral-500 font-roboto mt-2 px-2 mb-2 py-1 md:h-[50px] h-[50px]'>
             {item.attributes.name}
           </div>
         </div>
@@ -60,7 +58,7 @@ const CategoryDataDesign = ({ data,page, pageCount, setPage }) => {
   )
 }
 
-export default CategoryDataDesign
+export default BrandDataForPagination
 
 
 

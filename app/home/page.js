@@ -27,7 +27,7 @@ export default async function Home() {
   
   return (
    <div  //main div
-   className='bg-white-500 '
+   className='bg-white-500 scroll-smooth '
     > 
 
     
