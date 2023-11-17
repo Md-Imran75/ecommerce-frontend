@@ -11,36 +11,38 @@ import ProtectRoute from '@/utils/ProtectRoute'
 const Checkout = () => {
   const dispatch = useDispatch()
   const { cart } = useSelector((state) => state.cart)
-  console.log(cart)
+  
   return (
     <ProtectRoute>
     <div className="w-full font-roboto md:py-20">
-      <Wrapper>
+      <Wrapper className={'border border-background-500 py-10'}>
         {/* checkout screen  */}
         {cart.length > 0 && (
           <>
             {/* HEADING AND PARAGRAPH START */}
-            <div className="text-center max-w-[800px] mx-auto mt-8 md:mt-0">
-              <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-                Shopping Cart
+            <div className="text-center  max-w-[800px] mx-auto mt-8 md:mt-0">
+              <div className="text-[28px]  uppercase md:text-[34px] mb-5 font-semibold leading-tight">
+                Checkout your garage
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row gap-12 py-10">
+            <div className="flex flex-col w-full md:w-1/2 lg:flex-row gap-12 py-10">
 
 
               {/* CART ITEMS START */}
               <div className="flex-[2]">
-                <div className="text-lg font-bold">Cart Items</div>
+                {cart.length === 1 ? (
+                  <div className="text-lg mb-[10px] font-bold">My Bike</div>
+                ): <div className="text-lg mb-[10px] font-bold">My Bikes</div>}
 
               
 
                 {
                        cart.map((item) => (
             
-              <div key={item.id} className='my-2 w-full md:w-1/2 bg-primary-200 py-2 px-3'>
+              <div key={item.id} className='my-2 w-full  flex-col flex bg-primary-200 py-2 px-3'>
                <div className='flex mt-2 justify-between'>
   
-            <div className='h-[70px] w-[70px] '>
+            <div className=' h-[40px] w-[40px] md:h-[70px] md:w-[70px] '>
               <Image 
               alt={item.attributes.title}
               height={120}
@@ -49,11 +51,22 @@ const Checkout = () => {
               />
               </div>
   
-             <div className='flex flex-col'>
-             <div className=' w-[200px] leading-[18px] text-[18px]'>{item.attributes.title}</div>
-             <div className='flex justify-start gap-4 mt-3'>
+             <div>
+             <div className=' w-[100px] md:w-[150px] lg:w-[350px] leading-[18px] ml-2 text-[10px] md:text-[18px]'>{item.attributes.title}</div>
+             </div>
 
-             <div className='flex justify-between'> 
+            <div className='w-[60px]  md:ml-0 md:w-[100px]'>
+            <div className=' text-[10px] md:text-[15px] font-bold mx-1'> &#2547;{item.attributes.price}</div> 
+            </div>
+
+          </div>
+          
+           
+           {/* brand delete and model */}
+
+           <div className='flex mt-3 justify-between'>
+           <div className='flex text-[12px]  justify-between'>
+            Model: 
              {/* categories */}
               {
                 item.attributes.categories.data.map((item) => (
@@ -67,34 +80,17 @@ const Checkout = () => {
 
              </div>
 
-              {/* quantity */}
-              <div className=''>
-                <b>Size:</b> {item.selectSize}
+              {/* brand name */}
+              <div className='flex text-[12px] justify-start bg-secondary-500 px-2 py-1 text-primary-100 gap-2'>
+                <b>Brand:</b> <p className='text-[12px] text-primary-100 '>{item.attributes.brand}</p>
               </div>
-
-              {/* colour */}
-              <div>
-                <b>Available: </b> {item.attributes.availableQTY}
-              </div>
-
+             
+             <div className='text-[15px] md:text-[25px]'>
+             <button onClick={() => dispatch(removeFromCart({id: item.id}))} className=' mt-1'> <AiFillDelete/> </button>
              </div>
-             </div>
-  
-            <div className='flex mx-2 text-[12px] flex-col'>
-             <button 
-             onClick={() => dispatch(increaseCount({id: item.id}))}
-             >+</button>
-              <p>{item.quantity}</p>
-             <button  onClick={() => dispatch(decreaseCount({id: item.id}))} >-</button>
-            </div>
-            <div className='flex flex-col'>
 
-            <div className='text-[12px] mx-1'> &#2547;{item.attributes.price}</div> 
-            <button onClick={() => dispatch(removeFromCart({id: item.id}))} className='ml-auto mt-1'> <AiFillDelete/> </button>
-            
-            </div>
-  
-          </div>
+           </div>
+
         </div>
             
           )
@@ -102,7 +98,8 @@ const Checkout = () => {
 
               </div>
               {/* CART ITEMS END */}
-              <div>
+              
+              <div className='w-full lg:w-1/2'>
                 hello
               </div>
             </div>
@@ -125,15 +122,16 @@ const Checkout = () => {
               width={300}
               height={300}
               className="w-[300px] md:w-[400px]"
+              alt='emty-cart-image'
             />
-            <span className="text-xl font-bold">Your checkout is empty</span>
+            <span className="text-xl font-bold">Your Garage is empty</span>
             <span className="text-center mt-4">
-              Looks like you have not added anything in your cart.
+              Looks like you have not added any bike in your garage.
               <br />
-              Go ahead and explore top categories.
+              Go ahead and explore top bike brand.
             </span>
             <Link href="/products">
-              <button className="bg-secondary-500 text-primary-100 px-2 py-2 rounded-sm">Continue Shopping</button>
+              <button className="bg-secondary-500 mt-5 text-primary-100 px-2 py-2 rounded-sm">Continue Shopping</button>
             </Link>
           </div>
         )}

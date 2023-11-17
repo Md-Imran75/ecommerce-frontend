@@ -52,7 +52,7 @@ const MobileCartDesign = ({setMobileCartOpen}) => {
       <div className='mt-[60px] mb-[60px]'>
         
       {
-          cart.map((item) => (
+         cart.length > 0 && ( cart.map((item) => (
             
             <div key={item.id} className=' mx-2 shadow-sm  my-2 bg-primary-300 py-2 px-3'>
             <div className='flex flex-col gap-5'>
@@ -94,7 +94,26 @@ const MobileCartDesign = ({setMobileCartOpen}) => {
         </div>
             
           )
-        )}
+        ))}
+
+       {
+          cart.length < 1 && (
+            (
+              <>
+               <div className='mt-[100px]'>
+                <Image
+                src={'/empty-cart.jpg'}
+                height={500}
+                width={500}
+                alt={'empty-cart'}
+                />
+               </div>
+              </>
+            )  
+          )
+        }
+
+
      </div>
 
 

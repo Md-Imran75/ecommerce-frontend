@@ -20,10 +20,10 @@ const Category = async({params}) => {
 
   return (
     <div className='w-full md:py-20'>
-      <Wrapper>
+      <Wrapper className={'border border-background-500'}>
         <div className='text-center max-w-[800px] mx-auto mt-8 md:mt-0'>
-          <div className='text-[28px] md:text-[34px] mb-5 font-roboto font-semibold leading-tight '>
-            {categories?.[0]?.attributes?.name}
+          <div className='text-[28px] md:text-[34px] mb-5 mt-5 font-roboto font-semibold leading-tight '>
+            <p className='bg-secondary-500 text-primary-100'>{categories?.[0]?.attributes?.name}</p>
           </div>
         </div>
 

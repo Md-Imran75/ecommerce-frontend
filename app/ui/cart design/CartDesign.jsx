@@ -54,7 +54,7 @@ const CartDesign = ({setCartOpen}) => {
     <div className='mt-[60px] mb-[200px]'>
         
         {
-          cart ? (
+          cart.length > 0 && (
             cart.map((item) => (
               
             <div key={item.id} className=' mx-2 shadow-sm z-50 my-2 bg-primary-300 py-2 px-3'>
@@ -98,14 +98,26 @@ const CartDesign = ({setCartOpen}) => {
             
           )
         )
-        ) : (
-          <>
-           <div className='mt-[100px]'>
-            helo
-           </div>
-          </>
-        )  
+        ) 
         
+        }
+
+
+        {
+          cart.length < 1 && (
+            (
+              <>
+               <div className='mt-[100px]'>
+                <Image
+                src={'/empty-cart.jpg'}
+                height={500}
+                width={500}
+                alt={'empty-cart'}
+                />
+               </div>
+              </>
+            )  
+          )
         }
        </div>
   
