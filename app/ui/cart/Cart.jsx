@@ -24,25 +24,32 @@ const Cart = () => {
         </div>
         
         <div className='text-sm mt-3 px-1  text-secondary-500 bg-primary-400'>
-        <p className='ml-3' >
-         
-        {cart.length < 1 && (<>
+        <div className='ml-3' >
+
+        <div>
+        {cart.length < 1 && 
          <div>
           {`0 Bike`}
          </div>
-         </>)} 
+         } 
 
-         {cart.length === 1 && (<>
-         <div>
+         {cart.length === 1 && 
+          <div>
+             <div>
           {`${cart.length} Bike`}
          </div>
-         </>)} 
-         {cart.length > 1 && <>
+         </div>
+         } 
+         {cart.length > 1 && 
+         <div>
          <div>
           {`${cart.length} Bikes`}
          </div>
-         </>}
-        </p>
+          </div>
+         }
+        </div>
+        
+        </div>
         </div>
 
         <div className='text-sm mt-3 px-1  text-secondary-500 bg-primary-400'>

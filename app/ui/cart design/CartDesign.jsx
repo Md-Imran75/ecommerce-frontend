@@ -63,7 +63,9 @@ const CartDesign = ({setCartOpen}) => {
              {/* image , titile start */}
             
             <div className='flex  justify-between'>
-            <div className='h-[40px] w-[60px]   mr-[15px]'>
+            <div>
+              <Link href={`/product/${item.attributes.slug}`}>
+              <div className='h-[40px] w-[60px]   mr-[15px]'>
               <Image 
               alt={item.attributes.title}
               height={120}
@@ -71,6 +73,8 @@ const CartDesign = ({setCartOpen}) => {
               src={item.attributes.thumbnail.data.attributes.url}
               />
               </div>
+              </Link>
+            </div>
   
             <div className=' text-neutral-500 w-full font-medium leading-[18px] text-[12px]'>{item.attributes.title}</div>
             </div>
@@ -80,10 +84,11 @@ const CartDesign = ({setCartOpen}) => {
 
              {/* Brand , price and delete button start */}
             <div className='flex justify-between'>
-            <div className=' w-2/3 text-neutral-500 font-roboto font-bold  leading-[18px] text-[12px]'>
+              
+              <div className=' w-2/3 text-neutral-500 font-roboto font-bold  leading-[18px] text-[12px]'>
               {`Brand: ${item.attributes.brand}`}
               </div>
-            
+              
             <div className='flex w-1/3 flex-col'>
 
             <div className='text-[13px] font-bold text-neutral-500 mx-1'> &#2547;{item.attributes.price}</div> 

@@ -61,12 +61,14 @@ const MobileCartDesign = ({setMobileCartOpen}) => {
             
             <div className='flex  justify-between'>
             <div className='h-[40px] w-[60px]   mr-[15px]'>
+              <Link href={`/product/${item.attributes.slug}`} >
               <Image 
               alt={item.attributes.title}
               height={120}
               width={120}
               src={item.attributes.thumbnail.data.attributes.url}
               />
+              </Link>
               </div>
   
             <div className=' text-neutral-500 w-full font-medium leading-[18px] text-[12px]'>{item.attributes.title}</div>
@@ -77,9 +79,11 @@ const MobileCartDesign = ({setMobileCartOpen}) => {
 
              {/* Brand , price and delete button start */}
             <div className='flex justify-between'>
-            <div className=' w-2/3 text-neutral-500 font-roboto  leading-[18px] text-[11px]'>
+           
+            < div className=' w-2/3 text-neutral-500 font-roboto  leading-[18px] text-[11px]'>
               {`Brand: ${item.attributes.brand}`}
               </div>
+        
             
             <div className='flex w-1/3 flex-col'>
 

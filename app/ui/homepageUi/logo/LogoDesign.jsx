@@ -9,8 +9,8 @@ const LogoDesign = () => {
         <Image
         src={'/logo.png'}
         alt={'home logo'}
-        height={50}
-        width={80}
+        height={70}
+        width={70}
         loading='lazy'
         />
     </div>

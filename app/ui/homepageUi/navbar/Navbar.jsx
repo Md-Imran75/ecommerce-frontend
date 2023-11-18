@@ -278,7 +278,7 @@ const Navbar = () => {
                  setBorderContact(true)
                }} 
                className={`${borderContact ? 'border-b-2 md:border-b-4' : ''}`}>
-                <Link href={'/contact'}>Contact</Link>
+                <Link href={'/blogs'}>BLOG</Link>
                 </div>
 
             </div>

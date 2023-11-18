@@ -62,7 +62,7 @@ const Login = ({setIsOpen , setShowLogout,  setSignupOpen}) =>  {
   }
 
   return (
-    <section className="text-gray-600 z-50   md:mt-10 font-roboto fixed w-full h-full top-20  ">
+    <section className="text-gray-600 z-50   md:mt-[60px] font-roboto fixed w-full h-full top-20  ">
     
  <div className='flex flex-col mx-2 xl:mx-[450px] shadow-2xl lg:mx-[250px] md:mx-16 px-10 py-10 bg-primary-100'>
     <div className='flex justify-between'>

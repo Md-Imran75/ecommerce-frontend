@@ -1,7 +1,3 @@
-
-import ProductCard from '@/app/ui/ProductPage/ProductCard';
-import Wrapper from '@/app/ui/wrapper/Wrapper';
-import getProducts from '@/app/lib/getProducts';
 import HomeCarousel from '@/app/ui/homepageUi/homePageCarousel/HomeCarousel';
 import getAnything from '@/app/lib/getAnything';
 import PaginationProducts from '../ui/homePageData/productData/PaginationProducts';
@@ -20,7 +16,8 @@ export default async function Home() {
     const data = await res.data
     const image = await data?.attributes?.image?.data
   
-
+    
+    
    
   
    
@@ -29,7 +26,8 @@ export default async function Home() {
    <div  //main div
    className='bg-white-500 scroll-smooth '
     > 
-
+    
+  
     
     {/* Home Carousel start */}
     <div className=' w-full '>

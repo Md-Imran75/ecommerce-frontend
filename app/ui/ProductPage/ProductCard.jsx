@@ -65,7 +65,7 @@ const ProductCard = ({ data }) => {
         />
         <div className=' px-2  h-[75px]  text-neutral-500/[0.90]'>
           <h4 className=' text-[14px] font-medium mt-5 font-roboto h-[45px]'>
-              {title.length > 40 ? (`${title.slice(0, 50)}...`) : title}
+              {title.length > 50 ? (`${title.slice(0, 50)}...`) : title}
           </h4>
           <div className='flex justify-between mt-1 items-center text-neutral-500 font-roboto'>
             <p className='mr-1 text-[15px] font-semibold font-roboto text-secondary-400'>
