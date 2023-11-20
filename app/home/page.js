@@ -16,7 +16,7 @@ export default async function Home() {
     const data = await res.data
     const image = await data?.attributes?.image?.data
   
-    
+   
     
    
   
